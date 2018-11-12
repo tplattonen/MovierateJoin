@@ -63,16 +63,14 @@
 			 -->
 			<div class="multiselect">
 				<div class="selectBox" onclick="showCheckboxes()">
-					<select>
-						<option>Select an option</option>
-					</select>
+					<p class="">Choose categories</p>
 					<div class="overSelect"></div>
 				</div>
-				<div id="checkboxes" class="form-control">
-					<label for="one"> <input type="checkbox"
+				<div id="checkboxes" class="checkcontainer">
+					<label for="one" class="one"> <input type="checkbox"
 						th:field="*{categories[0].name}" th:each="category: ${categories}"
 						th:value="${category.name}" th:text="${category.name}" th:checked=${flag} /></label>
-						
+						<span class="checkmark"></span>
 					
 				</div>
 			</div>

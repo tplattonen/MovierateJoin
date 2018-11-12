@@ -39,6 +39,7 @@ public class Movie {
 	@ManyToOne
 	private Category category;
 	
+	// String consisting needed categories for table input
 	public void setCategoriesString(String categoriesstring) {
 		this.setCategoriesstring(categoriesstring);
 	}

@@ -41,6 +41,7 @@ body {
 }
 .welcome {
     color: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
 }
 .outform {
     float: right;
@@ -118,8 +119,38 @@ input[type=submit] {
     
 }
 
+/* Checkbox */
+.multiselect {
+	border-radius: 5px;
+    background-color: #f2f2f2;
+    width: 40%;
+    
+}
 
+.checkcontainer {
+	display: block;
+    margin-bottom: 12px;
+    font-size: 30px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
+input[type=checkbox] {
+  width: 30px;
+  height: 30px;
+  background: #333;
+  margin: 20px ;
+  position: relative;
+  
+  
+}
+
+.choose {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 22px;
+}
 
 /* Create three unequal columns that floats next to each other */
 .column {

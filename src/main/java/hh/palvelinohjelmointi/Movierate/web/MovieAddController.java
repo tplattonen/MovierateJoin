@@ -1,19 +1,12 @@
 package hh.palvelinohjelmointi.Movierate.web;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -34,15 +27,24 @@ public class MovieAddController {
     private MovieRepository movieRepository; 
 	
 	
-
+	// Returns empty form for adding new movie
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addCategory(Model model){
 	    model.addAttribute("movieaddform",  new MovieAddForm());
 	    model.addAttribute("categories", categoryRepository.findAll());
 	    return "addmovie";
+	}  
+	
+	// Returns filled form for editing purposes
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editMovie(@PathVariable("id") Long movieId,Model model){
+		model.addAttribute("movie",movieRepository.findById(movieId));
+	    model.addAttribute("categories", categoryRepository.findAll());
+	    return "editmovie";
 	}   
     
-	 @RequestMapping(value = "/save", method = RequestMethod.POST)
+	// Method that enables saving of multiple categories
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	    public String save(@Valid MovieAddForm movieaddform, 
 	    		BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 	        if (!bindingResult.hasErrors()) { // validation errors
@@ -63,16 +65,10 @@ public class MovieAddController {
 				    		movie.setCategoriesString(i.getName());
 			    		}
 			    		categoryRepository.save(category);
-			    		movieRepository.save(movie);
-			    		
+			    		movieRepository.save(movie);		
     	}
     	
     	return "redirect:/movielist";    	
     }   
-	 /*
-	 @ModelAttribute("allCategories")
-	 public List<Category> populateCategories() {
-	     return Arrays.asList(Category.ALL);
-	 }
-    */
+	
 }

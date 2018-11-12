@@ -81,13 +81,14 @@ public class MovierateController {
 	     return "redirect:movielist";
 	} */
 	
+	/*
 	// Edit movie using id
 	@RequestMapping (value="/edit/{id}")
-	public String editBook(@PathVariable("id") Long movieId,Model model){
+	public String editMovie(@PathVariable("id") Long movieId,Model model){
 		model.addAttribute("movie",movieRepository.findById(movieId));
 		model.addAttribute("categories",categoryRepository.findAll());
 		return "editmovie";
-	}
+	} */
 	
 	// LOGIN
 	@RequestMapping(value="/login")

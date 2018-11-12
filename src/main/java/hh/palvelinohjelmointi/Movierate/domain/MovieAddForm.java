@@ -1,20 +1,12 @@
 package hh.palvelinohjelmointi.Movierate.domain;
 
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,6 +26,8 @@ public class MovieAddForm {
     @JoinColumn(name = "categoryId")
 	private Category category;
     
+    
+    // Arraylist for 
     private ArrayList<Category> categories = new ArrayList<>();
 	
     public void setCategories(ArrayList<Category> categories) {

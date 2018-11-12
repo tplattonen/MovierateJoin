@@ -54,12 +54,27 @@
             
 			 <textarea type="text" id="review" th:field="*{review}" placeholder="Review"></textarea>
 			<div style="clear: both; display: block; height: 10px;"></div>
-            
+            <!-- 
 			<label for="deplist">Choose Category</label><br>
 			 <select id="deplist" th:field="*{category}" class="form-control" >
        			<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}" ></option>
     		</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
+			-->
+			<div class="multiselect">
+				<div class="selectBox" onclick="showCheckboxes()">
+					<p class="">Choose categories</p>
+					<div class="overSelect"></div>
+				</div>
+				<div id="checkboxes" class="checkcontainer">
+					<label for="one" class="one"> <input type="checkbox"
+						th:field="*{categories[0].name}" th:each="category: ${categories}"
+						th:value="${category.name}" th:text="${category.name}"  /></label>
+						<span class="checkmark"></span>
+					
+				</div>
+			</div>
+			
 			<input type="submit" value="Save"/>
 </form>
 
