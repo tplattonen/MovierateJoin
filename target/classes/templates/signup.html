@@ -1,0 +1,54 @@
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+        <head>
+            <title>Movierate Sign up</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link rel="stylesheet" type="text/css" href="css/main.css">
+            <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        </head>
+
+
+
+        <body>
+          
+            
+                <div class="wrap-login">
+                    <img id="profile-img" class="profile-img-card" src="https://i.gifer.com/4M52.gif" />
+                    
+                    <div class="title"><h1>Sign-up</h1></div>
+                    
+            <form class="login-form" th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+                <div class="form-ctrl">
+                <label> Username :<input type="text" th:field="*{username}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
+				</div>
+				
+                <div class="form-ctrl">
+                <label> Password :<input type="password" th:field="*{password}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+				</div>
+				
+				<div class="form-ctrl">
+				<label> Re-type Password: <input type="password" th:field="*{passwordCheck}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>
+				</div>
+				
+                <br>
+                <br>
+
+
+                <div class="container-login-form-btn">	
+                    <button class="login-form-btn" type="submit" value="Signup">
+							Sign up
+				    </button>
+                </div>
+                
+                
+            </form>
+            </div>
+            
+        </body>
+    </html>

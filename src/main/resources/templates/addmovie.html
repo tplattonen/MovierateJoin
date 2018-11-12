@@ -1,0 +1,105 @@
+
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+    <title>
+
+    </title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Movierate">
+    <meta name="author" content="Tuomas Plattonen">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/moviestyle.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    </head>
+
+        
+        
+        <body>
+	 <div class="header">
+      <h1>MovieRate</h1>
+        
+    </div>
+
+    <div class="topnav">
+        <h th:inline="text" class="welcome">Welcome [[${#httpServletRequest.remoteUser}]]</h>
+        <a href="index.html">Home</a>
+        <form th:action="@{/logout}" method="post" class="outform">
+            <button class="signout" type="submit" >
+                Sign out
+            </button>
+            </form>
+             <form th:action="@{/add}" method="post" class="outform">
+            <button class="signout" type="submit" >
+                Add movie
+            </button>
+            </form>
+    </div>
+            <h2>Add a new movie</h2>
+	<div class="movieform" align="center">
+		<form th:object="${movieaddform}" th:action="@{save}" action="#" method="post">
+		  	
+			<input type="text" id="name" th:field="*{name}" placeholder="Name" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+			<input type="text" id="director" th:field="*{director}" placeholder="Director" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+			<input type="text" id="imdbrating" th:field="*{imdbrating}" placeholder="IMDB rating" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="text" id="userrating" th:field="*{userrating}" placeholder="User rating 0.0 - 10.0" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+            <textarea type="text" id="review" th:field="*{review}" placeholder="Review"></textarea>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<!-- 
+			<label for="deplist">Choose Category</label><br>
+			 <select id="deplist" th:field="*{category}" class="form-control" type="checkbox">
+       			<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}" ></option>
+    		</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			 -->
+			<div class="multiselect">
+				<div class="selectBox" onclick="showCheckboxes()">
+					<select>
+						<option>Select an option</option>
+					</select>
+					<div class="overSelect"></div>
+				</div>
+				<div id="checkboxes" class="form-control">
+					<label for="one"> <input type="checkbox"
+						th:field="*{categories[0].name}" th:each="category: ${categories}"
+						th:value="${category.name}" th:text="${category.name}" th:checked=${flag} /></label>
+						
+					
+				</div>
+			</div>
+
+			<input type="submit" value="Save">
+		</form>
+	</div>
+            <br>
+            <br>
+            <br>
+              <div class="footer">
+      <p>&copy; 2018 Tuomas Plattonen. Contact: tuomasplada@gmail.com</p>
+    </div>
+    
+    <script>
+    var expanded = false;
+
+    function showCheckboxes() {
+      var checkboxes = document.getElementById("checkboxes");
+      if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+      } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+      }
+    }
+    </script>
+</body>
+</html>

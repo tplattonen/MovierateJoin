@@ -1,0 +1,189 @@
+body {
+    background-image: url(moviebackground3.jpg);
+    background-size: cover;
+}
+
+label {
+  margin: 0;
+  display: block;
+}
+
+/* LOGIN              */
+
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+     
+}
+
+.wrap-login {
+  width: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 50px 5px 37px 5px;
+  margin:auto;
+      
+  align-items: center;
+  background: #9152f8;
+  background: -webkit-linear-gradient(top, #ff1a1a, #1a1a1a);
+  background: -o-linear-gradient(top, #ff1a1a, #670a8f);
+  background: -moz-linear-gradient(top, #ff1a1a, #670a8f);
+  background: linear-gradient(top, #7579ff, #670a8f); 
+     box-shadow:
+        0 0 40px 30px #404040,  /* inner white */
+        0 0 80px 50px #808080, /* middle magenta */
+        0 0 100px 70px #ff1a1a; /* outer cyan */
+}
+
+/* FORM           */
+.login-form {
+  width: 100%;
+}
+ 
+.form-ctrl {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* BUTTONS        */
+
+.container-login-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.login-form-btn {
+  
+  font-size: 16px;
+  color: #FFF;
+  line-height: 1.2;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 120px;
+  height: 50px;
+  border-radius: 25px;
+
+  background: #1a1a1a;
+ 
+  position: relative;
+  z-index: 1;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+    background-color: #ff1a1a;
+}
+
+/* TITLE       */
+.title {
+    text-align: center;
+    margin: 0 auto;
+    display: block; 
+    font-family: 'Ubuntu', sans-serif;
+    color: #FFF;
+}
+
+/* SIGN UP     */
+.sign-up {
+    font-family: 'Ubuntu', sans-serif;
+    color: #FFF;
+    margin-left: 11%;
+    padding-top: 20px;
+}
+a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* INPUTS      */
+input {
+	outline: none;
+	border: none;
+}
+input[type=text], select {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password], select {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #424242;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=text]:focus,
+input[type=password]:focus{
+    border: 3px solid #000099;
+}
+
+
+input[type=submit]:hover {
+    background-color: #1C1C1C;
+}
+/* form profile img   */
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+@media (max-width: 992px) {
+  .alert-validate::before {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+

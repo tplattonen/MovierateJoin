@@ -1,0 +1,71 @@
+	<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+    <title>
+
+    </title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Movierate">
+    <meta name="author" content="Tuomas Plattonen">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/moviestyle.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    </head>
+    <body>
+    <div class="header">
+      <h1>MovieRate</h1>
+
+    </div>
+
+    <div class="topnav">
+        <h th:inline="text" class="welcome">Welcome [[${#httpServletRequest.remoteUser}]]</h>
+        <a href="index" th:action="@{/index}">Home</a>
+       
+       
+        <form th:action="@{/logout}" method="post" class="outform">
+            <button class="signout" type="submit" >
+                Sign out
+            </button>
+            </form>
+             <form th:action="@{/add}" method="get" class="outform">
+            <button class="signout" type="submit" >
+                Add movie
+            </button>
+            </form>
+    </div>
+      <table class="movie-table">
+          <thead>
+            <tr class="table-head">
+                <th>Name</th>
+                <th>Director</th>
+                <th>IMDB rating</th>
+                <th>User rating</th>
+                <th>Review</th>
+                <th>Category</th>
+                <th sec:authorize="hasRole('ADMIN')"> </th>
+                <th></th>
+                 <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each = "movie : ${movies}">
+                <td th:text="${movie.name}"></td>
+                <td th:text="${movie.director}"></td>
+                <td th:text="${movie.imdbrating}"></td>
+                <td th:text="${movie.userrating}"></td>
+                <td th:text="${movie.review}"></td>
+                <td th:text="${movie.categoriesstring}" ></td>
+                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${movie.id})}" type="button" class="delete" id="delete">Delete</a></td>
+                <td><a th:href="@{/edit/{id}(id=${movie.id})}" type="button" class="edit" id="edit">Edit</a></td>	    		
+            </tr>
+              </tbody>
+             </table>
+      <div class="column">
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2018 Tuomas Plattonen. Contact: tuomasplada@gmail.com</p>
+    </div>
+    </body>
+    </html>
