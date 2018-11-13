@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class MovieAddForm {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String name;
 	private String director;
@@ -40,8 +40,9 @@ public class MovieAddForm {
 
 	@ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "movieid")
 	private Movie movie;
+	private String categoriesstring;
 
 	public Long getId() {
 		return id;
@@ -108,7 +109,7 @@ public class MovieAddForm {
 	}
 
 	public MovieAddForm(Long id, String name, String director, double imdbrating, double userrating, String review,
-			Category category, Movie movie) {
+			Category category, String categoriesstring) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -117,9 +118,24 @@ public class MovieAddForm {
 		this.userrating = userrating;
 		this.review = review;
 		this.category = category;
-		this.movie = movie;
+		this.categoriesstring = categoriesstring;
 	}
     
+	@Override
+	public String toString() {
+		return "MovieAddForm [id=" + id + ", name=" + name + ", director=" + director + ", imdbrating=" + imdbrating
+				+ ", userrating=" + userrating + ", review=" + review + ", category=" + category + ", categories="
+				+ categories + ", movie=" + movie + ", categoriesstring=" + categoriesstring + "]";
+	}
+
+	public String getCategoriesstring() {
+		return categoriesstring;
+	}
+
+	public void setCategoriesstring(String categoriesstring) {
+		this.categoriesstring = categoriesstring;
+	}
+
 	public MovieAddForm () {}	
 	
     

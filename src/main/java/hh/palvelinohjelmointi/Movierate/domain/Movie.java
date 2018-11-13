@@ -33,7 +33,7 @@ public class Movie {
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@JsonIgnore
 	 @JoinTable(name = "category_movie", joinColumns = { @JoinColumn(name =
-		       "id") }, inverseJoinColumns = { @JoinColumn(name = "categoryId") }) 
+		       "movieid") }, inverseJoinColumns = { @JoinColumn(name = "categoryId") }) 
 	
 	private Set<Category> categories = new HashSet<Category>(0); 
 	@ManyToOne

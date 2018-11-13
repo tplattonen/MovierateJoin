@@ -36,9 +36,9 @@
         <h2>Edit movie</h2>
         
        <div class="movieform" align="center">
-		<form th:object="${movie}" th:action="@{../save}" action="#" method="post">
-			
-            <input type="hidden" th:field="*{id}" class="form-control"/>
+		<form th:object="${movieaddform}" th:action="@{/addmovie}" action="#" method="post">
+		
+            <input type="text" th:field="*{id}"/></br>
             
 		  <input type="text" id="name" th:field="*{name}" placeholder="Name" />
             <div style="clear: both; display: block; height: 10px;"></div>
@@ -51,9 +51,12 @@
             
 			<input type="text" id="userrating" th:field="*{userrating}" placeholder="User rating 0.0 - 10.0" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-            
+         
 			 <textarea type="text" id="review" th:field="*{review}" placeholder="Review"></textarea>
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="text" id="currentcategories" th:field="*{categoriesstring}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>   
             <!-- 
 			<label for="deplist">Choose Category</label><br>
 			 <select id="deplist" th:field="*{category}" class="form-control" >

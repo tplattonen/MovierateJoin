@@ -38,7 +38,7 @@
     </div>
             <h2>Add a new movie</h2>
 	<div class="movieform" align="center">
-		<form th:object="${movieaddform}" th:action="@{save}" action="#" method="post">
+		<form th:object="${movieaddform}" th:action="@{/addmovie}" action="#" method="post">
 		  	
 			<input type="text" id="name" th:field="*{name}" placeholder="Name" />
 			<div style="clear: both; display: block; height: 10px;"></div>

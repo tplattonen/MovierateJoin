@@ -45,8 +45,8 @@ public class MovierateApplication {
 		cRepository.save(new Category("Western"));
 		
 		/** Demo movies **/
-		movieRepository.save(new Movie("The Hateful Eight", "Quentin Tarantino", 7.8, 8.3, "User review would be here", cRepository.findByName("Drama").get(0), null));
-		movieRepository.save(new Movie("Interstellar", "Christopher Nolan", 8.6, 9.1, "User review would be here", cRepository.findByName("Sci-Fi").get(0), null));
+		movieRepository.save(new Movie("The Hateful Eight", "Quentin Tarantino", 7.8, 8.3, "User review would be here", cRepository.findByName("Drama").get(0), "Drama"));
+		movieRepository.save(new Movie("Interstellar", "Christopher Nolan", 8.6, 9.1, "User review would be here", cRepository.findByName("Sci-Fi").get(0), "Sci-Fi"));
 		
 		
 		// Create users: admin/admin, user/user, tume/tume (admin)

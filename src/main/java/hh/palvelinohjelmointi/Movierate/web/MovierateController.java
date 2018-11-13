@@ -1,6 +1,5 @@
 package hh.palvelinohjelmointi.Movierate.web;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hh.palvelinohjelmointi.Movierate.domain.Category;
 import hh.palvelinohjelmointi.Movierate.domain.CategoryRepository;
 import hh.palvelinohjelmointi.Movierate.domain.Movie;
 import hh.palvelinohjelmointi.Movierate.domain.MovieRepository;
@@ -29,7 +26,7 @@ public class MovierateController {
 	private CategoryRepository categoryRepository;
 	
 	
-	
+	// redirect to movielist after login
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String defis(Model model) {
 		model.addAttribute("movies", movieRepository.findAll());

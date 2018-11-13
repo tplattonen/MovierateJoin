@@ -1,5 +1,7 @@
 package hh.palvelinohjelmointi.Movierate.web;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,47 +30,65 @@ public class MovieAddController {
 	
 	
 	// Returns empty form for adding new movie
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = "addmovie", method = RequestMethod.GET)
 	public String addCategory(Model model){
-	    model.addAttribute("movieaddform",  new MovieAddForm());
-	    model.addAttribute("categories", categoryRepository.findAll());
+		  if (!model.containsAttribute("movieaddform")) {
+			    System.out.println("We are here");
+			    MovieAddForm movieaddform = new MovieAddForm();
+			    System.out.println(movieaddform.getId());
+			    model.addAttribute("movieaddform",  movieaddform);
+			    model.addAttribute("categories", categoryRepository.findAll());
+			  }
+
 	    return "addmovie";
 	}  
 	
 	// Returns filled form for editing purposes
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editMovie(@PathVariable("id") Long movieId,Model model){
-		model.addAttribute("movie",movieRepository.findById(movieId));
+		Optional<Movie> movie = movieRepository.findById(movieId);
+		if(movie.isPresent()) {
+			Movie existingMovie = movie.get();
+	    model.addAttribute("movieaddform",  new MovieAddForm(movieId, existingMovie.getName(), existingMovie.getDirector(), existingMovie.getImdbrating(),
+	    		existingMovie.getUserrating(), existingMovie.getReview(), existingMovie.getCategory(), existingMovie.getCategoriesstring()));
 	    model.addAttribute("categories", categoryRepository.findAll());
+	}
+
 	    return "editmovie";
-	}   
+	}
     
 	// Method that enables saving of multiple categories
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	    public String save(@Valid MovieAddForm movieaddform, 
+	@RequestMapping(value = "addmovie")
+	    public String addmovie(@Valid MovieAddForm movieaddform, 
 	    		BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 	        if (!bindingResult.hasErrors()) { // validation errors
 	                
 			    		Category category = new Category();
 			    		Movie movie = new Movie();
+			    		System.out.println(movieaddform.toString());
+			    		if (movieaddform.getId() != null) {
+			    			movie.setId(movieaddform.getId());
+			    		}
 			    		movie.setName(movieaddform.getName());
 			    		movie.setDirector(movieaddform.getDirector());
 			    		movie.setImdbrating(movieaddform.getImdbrating());
 			    		movie.setUserrating(movieaddform.getUserrating());
 			    		movie.setReview(movieaddform.getReview());
 			    		movie.setCategory(categoryRepository.findByName("Drama").get(0));
-			    		System.out.println(movieaddform.getCategory());
-			    		System.out.println(movieaddform.getCategories());
 
 			    		for (Category i: movieaddform.getCategories()) {
-			    			System.out.println(i.getName());
 				    		movie.setCategoriesString(i.getName());
 			    		}
 			    		categoryRepository.save(category);
-			    		movieRepository.save(movie);		
+			    		saveMovie(movie);		
     	}
     	
     	return "redirect:/movielist";    	
-    }   
+	    }   
+		 
+	    public String saveMovie(Movie movie) {
+	    	movieRepository.save(movie);
+		return "redirect:/movielist";    	
+	}
 	
 }
