@@ -67,7 +67,7 @@
 					<div class="overSelect"></div>
 				</div>
 				<div id="checkboxes" class="checkcontainer">
-					<label for="one" class="one"> <input type="checkbox" required
+					<label for="one" class="one"> <input type="checkbox" 
 						th:field="*{categories[0].name}" th:each="category: ${categories}"
 						th:value="${category.name}" th:text="${category.name}" th:checked=${flag} /></label>
 						<span class="checkmark"></span>
