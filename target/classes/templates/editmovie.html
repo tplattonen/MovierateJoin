@@ -38,21 +38,21 @@
        <div class="movieform" align="center">
 		<form th:object="${movieaddform}" th:action="@{/addmovie}" action="#" method="post">
 		
-            <input type="text" th:field="*{id}"/></br>
+            <input type="hidden" th:field="*{id}"/></br>
             
-		  <input type="text" id="name" th:field="*{name}" placeholder="Name" />
+		  <input type="text" id="name" th:field="*{name}" placeholder="Name" required/>
             <div style="clear: both; display: block; height: 10px;"></div>
 			
-            <input type="text" id="director" th:field="*{director}" placeholder="Director" />
+            <input type="text" id="director" th:field="*{director}" placeholder="Director" required/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-           <input type="text" id="imdbrating" th:field="*{imdbrating}" placeholder="IMDB rating" />
+           <input type="text" id="imdbrating" th:field="*{imdbrating}" placeholder="IMDB rating" required/>
 			<div style="clear: both; display: block; height: 10px;"></div>
             
-			<input type="text" id="userrating" th:field="*{userrating}" placeholder="User rating 0.0 - 10.0" />
+			<input type="text" id="userrating" th:field="*{userrating}" placeholder="User rating 0.0 - 10.0" required/>
 			<div style="clear: both; display: block; height: 10px;"></div>
          
-			 <textarea type="text" id="review" th:field="*{review}" placeholder="Review"></textarea>
+			 <textarea type="text" id="review" th:field="*{review}" placeholder="Review" required></textarea>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<input type="text" id="currentcategories" th:field="*{categoriesstring}"/>
@@ -70,7 +70,7 @@
 					<div class="overSelect"></div>
 				</div>
 				<div id="checkboxes" class="checkcontainer">
-					<label for="one" class="one"> <input type="checkbox"
+					<label for="one" class="one"> <input type="checkbox" required
 						th:field="*{categories[0].name}" th:each="category: ${categories}"
 						th:value="${category.name}" th:text="${category.name}"  /></label>
 						<span class="checkmark"></span>
